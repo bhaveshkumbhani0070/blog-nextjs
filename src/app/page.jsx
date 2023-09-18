@@ -2,7 +2,7 @@ import BlogCard from "@/components/blogCard/BlogCard";
 
 export async function fetchBlogs() {
   try {
-    const res = await fetch("http://localhost:3000/api/blog", {
+    const res = await fetch(process.env.NEXTAUTH_URL + "/api/blog", {
       cache: "no-store",
     });
     if (!res.ok) {
@@ -18,7 +18,6 @@ export async function fetchBlogs() {
 export default async function Home() {
   try {
     const blogs = await fetchBlogs();
-    console.log("blogs", blogs);
     return (
       <div className="container mx-auto px-4 py-8">
         {blogs.length > 0 && (

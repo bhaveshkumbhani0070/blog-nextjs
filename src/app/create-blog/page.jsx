@@ -50,7 +50,7 @@ const CreateBlog = () => {
     try {
       const imageUrl = await uploadImage();
 
-      const res = await fetch(`http://localhost:3000/api/blog`, {
+      const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${session?.user?.accessToken}`,

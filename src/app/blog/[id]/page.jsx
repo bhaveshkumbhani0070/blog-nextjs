@@ -35,7 +35,7 @@ const BlogDetails = (ctx) => {
   useEffect(() => {
     async function fetchBlog() {
       const res = await fetch(
-        `http://localhost:3000/api/blog/${ctx.params.id}`,
+        `${process.env.NEXTAUTH_URL}/api/blog/${ctx.params.id}`,
         {
           cache: "no-store",
         }
@@ -57,7 +57,7 @@ const BlogDetails = (ctx) => {
 
       if (confirmModal) {
         const res = await fetch(
-          `http://localhost:3000/api/blog/${ctx.params.id}`,
+          `${process.env.NEXTAUTH_URL}/api/blog/${ctx.params.id}`,
           {
             headers: {
               Authorization: `Bearer ${session?.user?.accessToken}`,
@@ -78,7 +78,7 @@ const BlogDetails = (ctx) => {
   const handleLike = async () => {
     try {
       const res = await fetch(
-        `http://localhost:3000/api/blog/${ctx.params.id}/like`,
+        `${process.env.NEXTAUTH_URL}/api/blog/${ctx.params.id}/like`,
         {
           headers: {
             Authorization: `Bearer ${session?.user?.accessToken}`,
